@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrossChain Pay Aggregator - Arc Testnet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>CrossChain Pay Aggregator</h1>
+      <p class="subtitle">Compare & route USDC transfers across chains | Arc Testnet</p>
+      <div class="wallet-bar">
+        <button id="connectBtn" onclick="connectWallet()">Connect Wallet</button>
+        <span id="walletInfo"></span>
+      </div>
+    </header>
+
+    <!-- Quote Section -->
+    <section class="panel">
+      <h2>Get Quote</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Amount (USDC)</label>
+          <input type="number" id="quoteAmount" value="5" min="0.01" step="0.01">
+        </div>
+        <div class="form-group">
+          <label>From</label>
+          <select id="srcChain">
+            <option value="ETH_SEPOLIA">ETH Sepolia</option>
+            <option value="ARC_TESTNET">Arc Testnet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>To</label>
+          <select id="dstChain">
+            <option value="ARC_TESTNET">Arc Testnet</option>
+            <option value="ETH_SEPOLIA">ETH Sepolia</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preference</label>
+          <select id="preference">
+            <option value="balanced">Balanced</option>
+            <option value="fastest">Fastest</option>
+            <option value="cheapest">Cheapest</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="getQuote()">Compare Routes</button>
+      <div id="quoteResult" class="quote-table"></div>
+    </section>
+
+    <!-- Payment History -->
+    <section class="panel">
+      <h2>Payment History <button class="btn-small" onclick="loadHistory()">Refresh</button></h2>
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-value" id="totalPayments">-</div>
+          <div class="stat-label">Total Payments</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="totalVolume">-</div>
+          <div class="stat-label">Volume (USDC)</div>
+        </div>
+      </div>
+      <div id="historyList" class="history-grid"></div>
+    </section>
+
+    <footer>
+      <p>Router: <code id="routerAddr"></code></p>
+      <p>Channels: CCTP v2 Fast | CCTP v2 Standard | Gateway | Direct</p>
+      <p>Built on <a href="https://arc.circle.com" target="_blank">Arc Network</a> by Circle</p>
+    </footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

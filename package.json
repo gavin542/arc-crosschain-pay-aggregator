@@ -1,0 +1,21 @@
+{
+  "name": "crosschain-pay-aggregator",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Cross-chain USDC payment aggregator on Arc Testnet - Compare and route via CCTP v2, Gateway, and Direct transfer",
+  "scripts": {
+    "deploy": "node scripts/deploy.mjs",
+    "quote": "node scripts/aggregator.mjs",
+    "execute": "node scripts/executor.mjs",
+    "status": "node scripts/check-status.mjs",
+    "demo": "node scripts/run-demo.mjs"
+  },
+  "dependencies": {
+    "@circle-fin/bridge-kit": "^1.6.0",
+    "@circle-fin/adapter-circle-wallets": "^1.2.0",
+    "@circle-fin/adapter-viem-v2": "^1.5.0",
+    "@circle-fin/developer-controlled-wallets": "^10.1.0",
+    "dotenv": "^16.3.1",
+    "viem": "^2.46.3"
+  }
+}
